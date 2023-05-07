@@ -16,13 +16,13 @@ pipeline {
       }
     }
 
-    stage('Build image') {
-      steps{
-        script {
-          dockerImage = docker.build dockerimagename
-        }
+    stage('Build') {
+      agent {
+        docker {
+          image 'flask-app'
       }
     }
+
 
     stage('Pushing Image') {
       environment {
